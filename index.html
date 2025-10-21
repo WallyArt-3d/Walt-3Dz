@@ -3,61 +3,193 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Walt-3Dz | Buy & Download 3D Meshes</title>
+  <title>Walt-3Dz | Buy & Download 3D Models</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #0a3d62;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 0;
+      background-color: #1e90ff;
+      color: white;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    .search-container {
+      text-align: center;
+      margin: 30px auto;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 60%;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .category {
+      background-color: #1e90ff;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .category:hover {
+      background-color: #4682b4;
+    }
+
+    .models-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .model-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+
+    .model-card:hover {
+      transform: scale(1.03);
+    }
+
+    .model-card img {
+      width: 100%;
+      height: 180px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    button {
+      background-color: #1e90ff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #4682b4;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1e90ff;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
+
   <header>
     <h1>Walt-3Dz</h1>
-    <input type="text" id="searchInput" placeholder="Search 3D models..." />
+    <p>Buy and Download Professional 3D Models Instantly</p>
   </header>
 
-  <nav class="categories">
-    <button onclick="filterCategory('all')">All</button>
-    <button onclick="filterCategory('vehicle')">Vehicles</button>
-    <button onclick="filterCategory('character')">Characters</button>
-    <button onclick="filterCategory('weapon')">Weapons</button>
-    <button onclick="filterCategory('architecture')">Architecture</button>
-  </nav>
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search 3D models..." onkeyup="searchModels()" />
+  </div>
 
-  <main id="modelContainer">
-    <!-- Example 3D model cards -->
+  <div class="categories">
+    <div class="category" onclick="filterCategory('all')">All</div>
+    <div class="category" onclick="filterCategory('character')">Characters</div>
+    <div class="category" onclick="filterCategory('vehicle')">Vehicles</div>
+    <div class="category" onclick="filterCategory('weapon')">Weapons</div>
+    <div class="category" onclick="filterCategory('free')">Free</div>
+  </div>
+
+  <div class="models-container" id="modelsContainer">
+    <!-- Example paid product -->
     <div class="model-card" data-category="vehicle">
-      <img src="lamborghini Urus.jpg" alt="jpg"/>
-      <h3>2023 lamborghini urus perfomate</h3>
-      <p>$10 | OBJ + FBX</p>
-      <!-- Replace this Stripe link with your real one -->
-      <a href="https://buy.stripe.com/test_XXXXXXXXXXXXX" target="_blank" rel="noopener">
-        <button>Buy $10https://<your-github-username>.github.io/Walt-3Dz/success.html
-</button>
+      <img src="assets/images/Lamborghini Urus.jpg" alt="jpg" />
+      <h3>Lamborghini Urus</h3>
+      <p>₦5,000</p>
+      <a href="https://paystack.com/pay/militarytruck" target="_blank">
+        <button>Buy Now</button>
       </a>
     </div>
 
+    <!-- Example paid product -->
+    <div class="model-card" data-category="Character">
+      <img src="assets/images/Mutant.jpg" alt="jpg" />
+      <h3>Mutant Character</h3>
+      <p>₦3,500</p>
+      <a href="https://paystack.com/pay/Mutant" target="_blank">
+        <button>Buy Now</button>
+      </a>
+    </div>
+
+    <!-- Example free product -->
     <div class="model-card" data-category="vehicle">
-      <img src="futuristic car.jpg" alt="jpg"/>
-      <h3>Futuristic car</h3>
+      <img src="assets/images/Futuristic Car.jpg" alt="jpg" />
+      <h3>Futuristic Car</h3>
       <p>Free Download</p>
-      <a href="assets/models/Futuristic_Car_Game-Ready"download>
-        <button>Download</button>
+      <a href="assets/models/Futuristic_Car_Game-Ready.zip" download>
+        <button>Download Free</button>
       </a>
     </div>
-
-    <div class="model-card" data-category="character">
-      <img src="Mutant.jpg" alt="jpg"/>
-      <h3>Mutant Charcter</h3>
-      <p>$5 | FBX</p>
-      <a href="https://buy.stripe.com/test_YYYYYYYYYYYYY" target="_blank" rel="noopener">
-        <button>Buy $5https://<your-github-username>.github.io/Walt-3Dz/success.html
-</button>
-      </a>
-    </div>
-  </main>
+  </div>
 
   <footer>
-    <p>© 2025 Walt-3Dz | All Rights Reserved</p>
+    <p>© 2025 Walt-3Dz | Created by Walter</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    function searchModels() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const models = document.querySelectorAll(".model-card");
+      models.forEach(model => {
+        const text = model.innerText.toLowerCase();
+        model.style.display = text.includes(input) ? "block" : "none";
+      });
+    }
+
+    function filterCategory(category) {
+      const models = document.querySelectorAll(".model-card");
+      models.forEach(model => {
+        if (category === "all" || model.dataset.category.includes(category)) {
+          model.style.display = "block";
+        } else {
+          model.style.display = "none";
+        }
+      });
+    }
+  </script>
+
 </body>
 </html>
-
